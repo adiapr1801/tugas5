@@ -11,6 +11,7 @@ public class User {
     private String  username;
     private String password;
     private String  role;
+    private String name;
     private String  email;
     private String active;
 
@@ -25,6 +26,13 @@ public class User {
         this.active = active;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getId() {
         return id;
