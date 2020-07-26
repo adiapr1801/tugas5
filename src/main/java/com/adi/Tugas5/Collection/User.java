@@ -1,38 +1,25 @@
-package com.adi.Tugas5.Entity;
+package com.adi.Tugas5.Collection;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.List;
 
 
 @Document(collection="user")
 public class User {
     @Id
-    private String  id;
-    private String  username;
+    private String id;
+    private String username;
     private String password;
-    private String  role;
+    private String role;
     private String name;
-    private String  email;
-    private String active;
+    private String email;
+    private DetailUser detailUser;
 
     public User(){}
 
-    public User(String id, String username, String password, String role, String email, String active) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.role = role;
-        this.email = email;
-        this.active = active;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getId() {
         return id;
@@ -45,6 +32,7 @@ public class User {
     public String getUsername() {
         return username;
     }
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -52,6 +40,7 @@ public class User {
     public String getPassword() {
         return password;
     }
+
     public void setPassword(String password) {
         this.password = password;
     }
@@ -59,22 +48,33 @@ public class User {
     public String getRole() {
         return role;
     }
+
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
-    public String getActive() {
-        return active;
+    public DetailUser getDetailUser() {
+        return detailUser;
     }
-    public void setActive(String active) {
-        this.active = active;
+
+    public void setDetailUser(DetailUser detailUser) {
+        this.detailUser = detailUser;
     }
 
     @Override
@@ -84,8 +84,9 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
+                ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", active='" + active + '\'' +
+                ", DetailUser=" + detailUser +
                 '}';
     }
 }

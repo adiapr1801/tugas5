@@ -1,8 +1,8 @@
 package com.adi.Tugas5.Service;
 
-import com.adi.Tugas5.Collection.DetailUser;
+import com.adi.Tugas5.Collection.Item;
 import com.adi.Tugas5.Collection.User;
-import com.adi.Tugas5.Repository.DetailUserRepo;
+import com.adi.Tugas5.Repository.ItemRepo;
 import com.adi.Tugas5.Repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -15,28 +15,25 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserService {
+public class ItemService {
     @Autowired
-    UserRepo userRepo;
+    ItemRepo itemRepo;
 
-    @Autowired
-    DetailUserRepo detailUserRepo;
-
-    public List<User> getAllUser(Integer pageNo, String sortKey){
+    public List<Item> getAllItem(Integer pageNo, String sortKey){
         int noOfRecord = 1;
         Pageable page = PageRequest.of(pageNo, noOfRecord, Sort.by(sortKey));
-        Page<User> pagedResult = userRepo.findAll(page);
+        Page<Item> pagedResult = itemRepo.findAll(page);
         return pagedResult.getContent();
     }
 
 
-    public boolean updateUser(User body) {
-        Optional<User> userResult = userRepo.findById(body.getId());
+    public boolean updateItem(Item body) {
+        Optional<Item> itemResult = itemRepo.findById(body.getId());
 
-        if (userResult != null) {
+        if (itemResult != null) {
             try {
 
-                userRepo.save(body);
+                itemRepo.save(body);
                 return true;
             } catch (Exception e) {
                 return false;
@@ -47,21 +44,21 @@ public class UserService {
 
     }
 
-    public boolean saveUser(User body) {
+    public boolean saveItem(Item body) {
 
         try {
-            userRepo.save(body);
+            itemRepo.save(body);
             return true;
         }catch (Exception e){
             return false;
         }
     }
 
-    public boolean DeleteBook(String id) {
-        User result = userRepo.deleteByid(id);
+    public boolean DeleteItem(String id) {
+        Item result = itemRepo.deleteByid(id);
         if (result != null) {
             try {
-                userRepo.delete(result);
+                itemRepo.delete(result);
                 return true;
             } catch (Exception e) {
                 return false;
@@ -71,6 +68,4 @@ public class UserService {
             return false;
         }
     }
-
-
 }
