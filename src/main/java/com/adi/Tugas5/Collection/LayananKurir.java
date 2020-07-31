@@ -9,17 +9,24 @@ public class LayananKurir {
     private String id;
     private String nama;
     private int harga;
-    private int id_kurir;
     private int estimasi;
+    private Kurir kurir;
 
     public  LayananKurir(){}
 
-    public LayananKurir(String id, String nama, int harga, int id_kurir, int estimasi) {
+    public LayananKurir(String id, String nama, int harga, int estimasi) {
         this.id = id;
         this.nama = nama;
         this.harga = harga;
-        this.id_kurir = id_kurir;
         this.estimasi = estimasi;
+    }
+
+    public Kurir getKurir() {
+        return kurir;
+    }
+
+    public void setKurir(Kurir kurir) {
+        this.kurir = kurir;
     }
 
     public String getId() {
@@ -46,13 +53,6 @@ public class LayananKurir {
         this.harga = harga;
     }
 
-    public int getId_kurir() {
-        return id_kurir;
-    }
-
-    public void setId_kurir(int id_kurir) {
-        this.id_kurir = id_kurir;
-    }
 
     public int getEstimasi() {
         return estimasi;
@@ -68,7 +68,6 @@ public class LayananKurir {
                 "id='" + id + '\'' +
                 ", nama='" + nama + '\'' +
                 ", harga=" + harga +
-                ", id_kurir=" + id_kurir +
                 ", estimasi=" + estimasi +
                 '}';
     }
